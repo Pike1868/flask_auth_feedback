@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, redirect, request, flash, url_for
-from .models import Example
+from .models import User
 
 main = Blueprint('main', __name__)
 

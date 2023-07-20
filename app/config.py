@@ -5,7 +5,8 @@ class Config:
     SQLALCHEMY_RECORD_QUERIES = True
     SECRET_KEY = 'secret'
     DEBUG = True
-    
+
+
 class Testing:
     TESTING = True
     SQLALCHEMY_DATABASE_URI = 'postgresql:///flask_feedback_db_test'
