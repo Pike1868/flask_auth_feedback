@@ -1,0 +1,24 @@
+{% extends "base.html"%}
+{%block content%}
+
+<div class="m-4 container-sm">
+    <h1 class="display-1">Login</h1>
+    <p class="lead">Login Below. Don't have an account? <a href="{{ url_for)'user.register'}}">Register here</a></p>
+    <form action="/login" method="POST" class="m-4 container-sm">
+
+        {{ form.hidden_tag() }}
+
+        {% for field in form
+        if field.widget.input_type != 'hidden' %}
+        <p>
+            {{ field.label }}
+            {{ field(class_="form-control") }}
+        </p>
+        {% endfor %}
+
+        <button class="btn btn-success" type="submit">Login</button>
+
+    </form>
+</div>
+
+{% endblock%}

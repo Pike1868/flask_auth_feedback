@@ -39,3 +39,29 @@ Create a ***User*** model for SQLAlchemy with the following columns:
 ## **Part 2: Make a Base Template**
 
 Add a base template with slots for the page title and content. Other templates will extend from this. Bootstrap included in base template.
+
+## **Part 3: Make Routes For Users**
+
+Make routes for the following:
+
+**GET */ :*** Redirect to /register.
+
+**GET */register :*** Show a form that when submitted will register/create a user. This form should accept a username, password, email, first_name, and last_name. Make sure you are using WTForms and that your password input hides the characters that the user is typing!
+
+**POST */register :*** Process the registration form by adding a new user. Then redirect to ***/secret***
+
+**GET */login :*** Show a form that when submitted will login a user. This form should accept a username and a password. Make sure you are using WTForms and that your password input hides the characters that the user is typing!
+
+**POST */login :*** Process the login form, ensuring the user is authenticated and going to ***/secret*** if so.
+
+**GET */secret :*** Return the text “You made it!” for now.
+
+## **Part 4: Don’t let everyone go to */secret***
+
+Let’s protect this route and make sure that only users who have logged in can access this route! When the user successfully registers or logs in, store the ***username*** in the session.
+
+## **Part 5: Log out users**
+
+Make a route for logging out:
+
+**GET */logout :*** Clear any information from the session and redirect to ***/***
