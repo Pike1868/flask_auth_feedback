@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="m-4 container-sm">
+    <h1 class="display-1">Update Feedback</h1>
+    <form action="{{ url_for('feedback.update_feedback', feedback_id=feedback.id) }}" method="POST"
+        class="m-4 container-sm">
+
+        {{ form.hidden_tag() }}
+
+        {% for field in form
+        if field.widget.input_type != 'hidden' %}
+        <p>
+            {{ field.label }}
+            {{ field(class_="form-control") }}
+        </p>
+        {% endfor %}
+
+        <button class="btn btn-success" type="submit">Update</button>
+
+    </form>
+</div>
+{% endblock %}

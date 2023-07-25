@@ -16,3 +16,4 @@ class Testing:
     SECRET_KEY = 'secret'
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     DEBUG = True
+    WTF_CSRF_ENABLED = False

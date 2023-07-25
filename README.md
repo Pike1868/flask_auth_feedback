@@ -65,3 +65,35 @@ Let’s protect this route and make sure that only users who have logged in can 
 Make a route for logging out:
 
 **GET */logout :*** Clear any information from the session and redirect to ***/***
+
+## **Part 6: Change */secret* to */users/<username>***
+
+Add some authorization, when a user logs in, take them to the following route:
+
+**GET */users/<username> :*** Display a template the shows information about that user (everything except for their password). You should ensure that only logged in users can access this page.
+
+## **Part 7: Give us some more feedback!**
+
+
+Create a ***Feedback*** model with the following columns:
+
+- ***id*** - a unique primary key that is an auto incrementing integer
+- ***title*** - a not-nullable column that is at most 100 characters
+- ***content*** - a not-nullable column that is text
+- ***username*** - a foreign key that references the username column in the users table
+
+## **Part 8: Add or Modify Routes For Users and Feedback**
+
+**GET */users/<username> :*** Show information about the given user. Show all of the feedback that the user has given. For each piece of feedback, display with a link to a form to edit the feedback and a button to delete the feedback. Have a link that sends you to a form to add more feedback and a button to delete the user **Make sure that only the user who is logged in can successfully view this page.**
+
+**POST */users/<username>/delete :*** Remove the user from the database and make sure to also delete all of their feedback. Clear any user information in the session and redirect to ***/***. **Make sure that only the user who is logged in can successfully delete their account.**
+
+**GET */users/<username>/feedback/add :*** Display a form to add feedback  **Make sure that only the user who is logged in can see this form.**
+
+**POST */users/<username>/feedback/add :*** Add a new piece of feedback and redirect to /users/<username> — **Make sure that only the user who is logged in can successfully add feedback.**
+
+**GET */feedback/<feedback-id>/update :*** Display a form to edit feedback — **Make sure that only the user who has written that feedback can see this form**
+
+**POST */feedback/<feedback-id>/update :*** Update a specific piece of feedback and redirect to /users/<username> — **Make sure that only the user who has written that feedback can update it.**
+
+**POST */feedback/<feedback-id>/delete :*** Delete a specific piece of feedback and redirect to /users/<username> — **Make sure that only the user who has written that feedback can delete it.**

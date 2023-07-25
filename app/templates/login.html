@@ -3,8 +3,8 @@
 
 <div class="m-4 container-sm">
     <h1 class="display-1">Login</h1>
-    <p class="lead">Login Below. Don't have an account? <a href="{{ url_for)'user.register'}}">Register here</a></p>
-    <form action="/login" method="POST" class="m-4 container-sm">
+    <p class="lead">Login Below. Don't have an account? <a href="{{ url_for('user.register')}}">Register here</a></p>
+    <form action="{{ url_for('user.login_user')}}" method="POST" class="m-4 container-sm">
 
         {{ form.hidden_tag() }}
 

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1 class="display-4">Welcome {{ user.username }}!</h1>
+<p><strong>First name:</strong> {{ user.first_name }}</p>
+<p><strong>Last name:</strong> {{ user.last_name }}</p>
+<p><strong>Email:</strong> {{ user.email }}</p>
+
+<div class=" d-flex">
+    <a href="{{ url_for('feedback.add_feedback', username=user.username) }}">
+        <button class="btn btn-outline-primary mx-2">Add Feedback</button>
+    </a>
+    <a href="{{ url_for('user.delete_user', username=user.username) }}">
+        <button class="btn btn-outline-danger mx-2">Delete User</button>
+    </a>
+</div>
+{% if user.feedbacks %}
+<ul class="container-sm m-4">
+    {% for feedback in user.feedbacks %}
+    <li class="my-4">
+        <h4>{{feedback.title}}</h4>
+        <p>
+            {{feedback.content}}
+        </p>
+        <small>
+            By {{feedback.username}} on {{feedback.friendly_date}}
+        </small>
+        <div class="d-inline-flex">
+            <a href="{{ url_for('feedback.get_update_feedback_form', feedback_id=feedback.id)}}">
+                <button class="btn btn-outline-success mx-2 p-1">Edit Feedback</button>
+            </a>
+            <form action="{{ url_for('feedback.delete_feedback', feedback_id=feedback.id) }}" method="POST">
+                <button class="btn btn-outline-danger mx-2">Delete Feedback</button>
+            </form>
+        </div>
+    </li>
+    {% endfor %}
+</ul>
+{%endif%}
+
+{% endblock %}
